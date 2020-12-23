@@ -3,14 +3,13 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    #url: jdbc:mysql://192.168.140.153:49999/cbb_userauth?useOldAliasMetadataBehavior=true&createDatabaseIfNotExist=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
-    url: jdbc:mysql://192.168.141.222:49999/cbb_userauth?useOldAliasMetadataBehavior=true&createDatabaseIfNotExist=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/jspro_demo?useOldAliasMetadataBehavior=true&createDatabaseIfNotExist=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
     username: root
-    password: Summit2017
+    password: 123456
   application:
     name: "jspro_demo"
   flyway:
-    # 如果启动的时候需要flyway管理sql脚本的话，将enabled设置为true
+    # 濡傛灉鍚姩鐨勬椂鍊欓渶瑕乫lyway绠＄悊sql鑴氭湰鐨勮瘽锛屽皢enabled璁剧疆涓簍rue
     enabled: true
     baseline-on-migrate: true
     locations: classpath:db
