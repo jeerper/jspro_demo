@@ -1,1 +1,21 @@
+server:
+  port: 10001
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    #url: jdbc:mysql://192.168.140.153:49999/cbb_userauth?useOldAliasMetadataBehavior=true&createDatabaseIfNotExist=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+    url: jdbc:mysql://192.168.141.222:49999/cbb_userauth?useOldAliasMetadataBehavior=true&createDatabaseIfNotExist=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
+    username: root
+    password: Summit2017
+  application:
+    name: "jspro_demo"
+  flyway:
+    # 如果启动的时候需要flyway管理sql脚本的话，将enabled设置为true
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db
+    encoding: utf-8
+mybatis-plus:
+  mapper-locations: classpath:com/summit/dao/**/*.xml
+  config-location: classpath:mybatis-config.xml
 
