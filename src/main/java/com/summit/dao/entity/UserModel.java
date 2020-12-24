@@ -1,19 +1,17 @@
-package com.summit.entity;
+package com.summit.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Collection;
 
 /**
  * @author: jeerper
  * @since: 2020/12/16 15:49
  */
 @Data
-public class UserInfo{
+@TableName(value = "sys_user")
+public class UserModel {
     @ApiModelProperty(value = "登录名称", name = "userName", required = true)
     @TableField(value = "USERNAME")
     private String userName;
