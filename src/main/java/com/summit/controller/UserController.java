@@ -1,6 +1,7 @@
 package com.summit.controller;
 
 
+import com.summit.annotation.UserSave;
 import com.summit.dao.entity.UserModel;
 import com.summit.service.UserService;
 import com.summit.util.ResponseUtil;
@@ -23,6 +24,10 @@ public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private UserService userService;
+
+
+
+    @UserSave
     @ApiOperation(value = "录入用户信息", notes = "返回不是-1则为成功")
     @PostMapping(value = "insertUserInfo")
     public Object addUserInfo(@RequestBody UserModel userInfo){

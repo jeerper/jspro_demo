@@ -31,7 +31,6 @@ public class SwaggerConfig {
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                .useDefaultResponseMessages(false)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(SWAGGER_SCAN_BASE_PACKAGE))
                 .paths(PathSelectors.any())
@@ -40,9 +39,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("jspro_demo RESTful API")
+                .title("使用swagger接口测试api文档")
                 .description("接口说明与调试界面")
-                .termsOfServiceUrl("https://www.baidu.com/")
                 .contact(new Contact("Summit", "https://www.baidu.com/", ""))
                 .version("1.0")
                 .build();
