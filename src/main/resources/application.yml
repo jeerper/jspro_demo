@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 45009
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -17,4 +17,22 @@ spring:
 mybatis-plus:
   mapper-locations: classpath:com/summit/dao/**/*.xml
   config-location: classpath:mybatis-config.xml
+
+app:
+  auth-white-list:
+    # business url
+    - '/**/*.jpg'
+    - '/**/*.jpeg'
+    - '/**/*.png'
+    - '/**/not-auth/**'
+    # actuator url
+    - '/actuator/**'
+    # swagger ui
+    - '/v2/api-docs'
+    - '/**/v2/api-docs'
+    - '/swagger-resources/**'
+    - '/swagger-ui.html'
+    - '/swagger/api-docs'
+    - '/webjars/**'
+    - '/**/wechat/**'
 

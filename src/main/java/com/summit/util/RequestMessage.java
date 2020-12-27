@@ -1,7 +1,5 @@
 package com.summit.util;
 
-import org.springframework.security.core.parameters.P;
-
 /**
  * @author: jeerper
  * @since: 2020/12/24 15:05
