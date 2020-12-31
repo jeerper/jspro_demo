@@ -63,7 +63,7 @@ public class ResponseUtil {
      */
     public static  RequestMessage failedResponse(String msg,String error){
         RequestMessage message =new  RequestMessage();
-        message.setCode(RequestMessage.SUCCESS_GETS_CODE);
+        message.setCode(RequestMessage.ERROR_CODE);
         if (StringUtils.isBlank(msg)){
             message.setMessage(RequestMessage.ERROR_MSG);
         }else{

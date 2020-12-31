@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.summit.dao.repository.UserInfoDao">
+    <resultMap id="BaseResultMap" type="com.summit.dao.entity.UserModel">
+        <result column="USERNAME" jdbcType="VARCHAR" property="userName"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="SEX" jdbcType="VARCHAR" property="sex"/>
+        <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
+        <result column="EMAIL" jdbcType="VARCHAR" property="email"/>
+        <result column="PHONE_NUMBER" jdbcType="INTEGER" property="phoneNumber"/>
+        <result column="HEADPORTRAIT" jdbcType="INTEGER" property="head_portrait"/>
+        <result column="POST" jdbcType="VARCHAR" property="post"/>
+        <result column="IS_ENABLED" jdbcType="VARCHAR" property="isEnabled"/>
+        <result column="UPDATE_TIME" jdbcType="VARCHAR" property="updateTime"/>
+        <result column="CREATE_TIME" jdbcType="VARCHAR" property="createTime"/>
+        <result column="STATE" jdbcType="VARCHAR" property="state"/>
+        <result column="NOTE" jdbcType="VARCHAR" property="note"/>
+    </resultMap>
     <insert id="insertUserInfo" parameterType="com.summit.dao.entity.UserModel">
         INSERT INTO sys_user
         (USERNAME,HEADPORTRAIT,NAME,SEX,PASSWORD,EMAIL,PHONE_NUMBER,POST,IS_ENABLED,
@@ -9,4 +24,31 @@
                 #{updateTime},#{createTime},#{state},#{note}
         )
     </insert>
+    <select id="findUsersByPages" resultMap="BaseResultMap">
+        select
+        *
+        from sys_user user
+        <where>
+            <if test="username != null">
+                and user.USERNAME like concat('%', #{username}, '%')
+            </if>
+            <if test="name != null">
+                and user.NAME like concat('%', #{name}, '%')
+            </if>
+            <if test="sex != null">
+                and user.SEX like concat('%', #{sex}, '%')
+            </if>
+            <if test="startDate != null">
+                and user.updatetime &gt;= #{startDate}
+            </if>
+            <if test="endDate != null">
+                and user.CREATE_TIME &gt;= #{endDate}
+            </if>
+            <if test="startPage != null and pageSize!=null"  >
+                limit ${pageSize} offset ${startPage}
+            </if>
+        </where>
+        order by pic_snapshot_time desc
+
+    </select>
 </mapper>

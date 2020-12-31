@@ -2,8 +2,13 @@ package com.summit.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @author: jeerper
@@ -39,11 +44,16 @@ public class UserModel {
     @ApiModelProperty(value = "启用状态:1是，0否 ,添加默认为启用", name = "isEnabled", example = "1", allowableValues = "1,0")
     @TableField(value = "IS_ENABLED")
     private Integer isEnabled;
-    @ApiModelProperty(value = "更新时间", name = "updateTime")
+    @ApiModelProperty(value = "更新时间", name = "updateTime", hidden = true)
     @TableField(value = "UPDATE_TIME")
-    private String updateTime;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime  updateTime;
+    @ApiModelProperty(value = "创建时间", name = "createTime", hidden = true)
     @TableField(value = "CREATE_TIME")
-    private String createTime;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")//出参格式化,jackson在序列化时间时是按照国际标准时间GMT进行格式化的，而在国内默认时区使用的是CST时区，两者相差8小时。
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") //入参格式化
+    private LocalDateTime createTime;
     @ApiModelProperty(value = "删除状态", name = "state",allowableValues = "1,0")
     @TableField(value = "STATE")
     private Integer state;

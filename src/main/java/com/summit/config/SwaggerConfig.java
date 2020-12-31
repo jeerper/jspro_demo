@@ -39,9 +39,9 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("使用swagger接口测试api文档")
+                .title("Jspro_demo接口测试api文档")
                 .description("接口说明与调试界面")
-                .contact(new Contact("Summit", "https://www.baidu.com/", ""))
+                .contact(new Contact("jeerper", "https://www.baidu.com/", ""))
                 .version("1.0")
                 .build();
     }
