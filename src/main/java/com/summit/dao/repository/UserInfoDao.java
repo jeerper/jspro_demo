@@ -22,4 +22,10 @@ public interface UserInfoDao extends BaseMapper<UserModel> {
                                      @Param("endDate")Date endDate,
                                      @Param("startPage")String start,
                                      @Param("pageSize")String pageSize);
+
+    int findUsersCount(@Param("username") String username,
+                       @Param("name") String name,
+                       @Param("sex")String sex,
+                       @Param("startDate")Date startDate,
+                       @Param("endDate")Date endDate);
 }

@@ -2,6 +2,7 @@ package com.summit.controller;
 
 
 import cn.hutool.core.date.DateUtil;
+import com.summit.annotation.UserOperate;
 import com.summit.dao.entity.UserModel;
 import com.summit.service.UserService;
 import com.summit.util.ResponseUtil;
@@ -30,7 +31,7 @@ public class UserController {
 
 
 
-    //@UserSave
+    @UserOperate
     @ApiOperation(value = "录入用户信息", notes = "返回不是-1则为成功")
     @PostMapping(value = "insertUserInfo")
     public Object addUserInfo(@RequestBody UserModel userInfo){
@@ -70,6 +71,7 @@ public class UserController {
             Page<UserModel> pagevo =userService.findUsersByPages(username,name,sex,start,end,pageIndex,pageSize);
             return  ResponseUtil.sucessObjectResponse(pagevo);
         } catch (Exception e) {
+            logger.error("查找用户列表失败",e);
             return ResponseUtil.failedResponse("查找用户列表失败", e.getMessage());
         }
     }

@@ -36,7 +36,7 @@
                 and user.NAME like concat('%', #{name}, '%')
             </if>
             <if test="sex != null">
-                and user.SEX like concat('%', #{sex}, '%')
+                and user.SEX =  #{sex}
             </if>
             <if test="startDate != null">
                 and user.updatetime &gt;= #{startDate}
@@ -44,11 +44,32 @@
             <if test="endDate != null">
                 and user.CREATE_TIME &gt;= #{endDate}
             </if>
-            <if test="startPage != null and pageSize!=null"  >
-                limit ${pageSize} offset ${startPage}
+        </where>
+        order by CREATE_TIME desc
+        <if test="startPage != null and pageSize!=null"  >
+            limit ${pageSize} offset ${startPage}
+        </if>
+    </select>
+    <select id="findUsersCount" resultType="java.lang.Integer">
+        SELECT
+        COUNT(user.USERNAME)
+        from  sys_user user
+        <where>
+            <if test="username != null">
+                and user.USERNAME like concat('%', #{username}, '%')
+            </if>
+            <if test="name != null">
+                and user.NAME like concat('%', #{name}, '%')
+            </if>
+            <if test="sex != null">
+                and user.SEX =  #{sex}
+            </if>
+            <if test="startDate != null">
+                and user.updatetime &gt;= #{startDate}
+            </if>
+            <if test="endDate != null">
+                and user.CREATE_TIME &gt;= #{endDate}
             </if>
         </where>
-        order by pic_snapshot_time desc
-
     </select>
 </mapper>

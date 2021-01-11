@@ -48,11 +48,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public Page<UserModel> findUsersByPages(String username, String name, String sex, Date start, Date end, Integer pageIndex,Integer pageSize) {
         Integer page=(pageIndex-1)*pageSize;
-        int toatl = userInfoDao.selectCount(Wrappers.<UserModel>lambdaQuery()
+        /*int toatl = userInfoDao.selectCount(Wrappers.<UserModel>lambdaQuery()
                 .eq(UserModel::getUserName, username)
                 .eq(UserModel::getName, name)
-                .eq(UserModel::getSex, sex));
-
+                .eq(UserModel::getSex, sex));*/
+        int toatl=userInfoDao.findUsersCount(username,name,sex,start,end);
         List<UserModel> userModels=userInfoDao.findUsersByPages(username, name, sex, start, end, String.valueOf(page),String.valueOf(pageSize));
         Page<UserModel> pageVo=new Page<>();
         pageVo.setRecords(userModels);
