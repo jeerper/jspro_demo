@@ -24,6 +24,7 @@ import java.util.Date;
  */
 @RestController
 @RequestMapping("/user")
+@CrossOrigin
 public class UserController {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
