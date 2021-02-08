@@ -52,6 +52,7 @@ public class UserServiceImpl implements UserService {
                 .eq(UserModel::getUserName, username)
                 .eq(UserModel::getName, name)
                 .eq(UserModel::getSex, sex));*/
+
         int toatl=userInfoDao.findUsersCount(username,name,sex,start,end);
         List<UserModel> userModels=userInfoDao.findUsersByPages(username, name, sex, start, end, String.valueOf(page),String.valueOf(pageSize));
         Page<UserModel> pageVo=new Page<>();

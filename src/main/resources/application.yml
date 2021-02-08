@@ -6,6 +6,9 @@ spring:
     url: jdbc:mysql://localhost:3306/jspro_demo?useOldAliasMetadataBehavior=true&createDatabaseIfNotExist=true&useSSL=false&useUnicode=yes&characterEncoding=UTF-8
     username: root
     password: 123456
+    initialSize: 1
+    maxActive: 20
+    maxWait: 600000
   application:
     name: "jspro_demo"
   flyway:
