@@ -34,8 +34,8 @@ public class ThreadTest {
         try {
             executorService = Executors.newFixedThreadPool(xjCount);
             CountDownLatch countDownLatch = new CountDownLatch(xjCount);
-            for (int j=0;j<xjCount;j++){
-                ThreadModel task = new ThreadModel(countDownLatch, outPath, ossUrlMap);
+            for (int j=0 ;j < xjCount;j++){
+                ThreadModel task = new ThreadModel(countDownLatch, outPath, ossUrlMap,j);
                 executorService.execute(task);
             }
             countDownLatch.await();

@@ -22,11 +22,13 @@ public class ThreadModel extends  Thread {
     private String outPath;
     private Map<String,File> ossUrlMap;
     private  static final String fileName = "test.txt";
+    private int j;
 
-    public ThreadModel(CountDownLatch count, String outPath, Map<String, File> ossUrlMap) {
+    public ThreadModel(CountDownLatch count, String outPath, Map<String, File> ossUrlMap,int j) {
         this.count = count;
         this.outPath = outPath;
         this.ossUrlMap = ossUrlMap;
+        this.j = j;
     }
 
     public  void run(){
@@ -39,6 +41,7 @@ public class ThreadModel extends  Thread {
             else{
                 System.out.println("出错了，该文件已经存在。");
             }
+            System.out.println("j--------->"+j);
             ossUrlMap.put(uuid,file);
             count.countDown();
         }catch (Exception e){
