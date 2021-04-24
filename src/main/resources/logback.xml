@@ -1,15 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
-<configuration debug="true">
-	<shutdownHook class="ch.qos.logback.core.hook.DelayingShutdownHook"/>
-	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-		<Target>System.out</Target>
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>%d-%c-%M-%t-%p: %m%n</pattern>
-			<!--<pattern>%d-%replace(%caller{1}){'\r\n',''}-%t-%p: %m%n</pattern>-->
+			<pattern>%d %p (%file:%line\)- %m%n</pattern>
+			<charset>UTF8</charset>
 		</encoder>
 	</appender>
-	<appender name="FILE"
+	<appender name="protallog"
 			  class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<File>logs/all.log</File>
 		<Append>true</Append>
@@ -21,38 +17,18 @@
 			<maxFileSize>32MB</maxFileSize>
 		</rollingPolicy>
 		<encoder>
+			<pattern>%d %p (%file:%line\)- %m%n</pattern>
 			<charset>utf-8</charset>
-			<pattern>%d-%c-%M-%t-%p: %m%n</pattern>
 		</encoder>
-	</appender>
-	<appender name="ERRORFILE"
-			  class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<Append>true</Append>
-		<File>logs/error/error.log</File>
-		<encoder>
-			<charset>utf-8</charset>
-			<pattern>%d-%c-%M-%t-%p: %m%n</pattern>
-		</encoder>
-		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>ERROR</level>
-		</filter>
-		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<FileNamePattern>logs/error/error-%d{yyyy-MM-dd,aux}/error-%d{yyyy-MM-dd}.%i.zip</FileNamePattern>
-			<maxFileSize>32MB</maxFileSize>
-		</rollingPolicy>
 	</appender>
 	<!--这个logger没有指定appender，它会继承root节点中定义的那些appender-->
 	<!--additivity表示要不要使用rootLogger配置的appender进行输出-->
-	<!--<logger name="com.summit.dao" level="INFO"/>-->
-	<logger name="com.summit" level="DEBUG">
-		<appender-ref ref="FILE"/>
-		<appender-ref ref="ERRORFILE"/>
-	</logger>
 	<!-- 日志级别排序为： TRACE < DEBUG < INFO < WARN < ERROR -->
+	<!--<logger name="com.summit.dao" level="INFO"/>-->
 	<root level="INFO">
-		<appender-ref ref="CONSOLE"/>
-		<appender-ref ref="FILE"/>
-		<appender-ref ref="ERRORFILE"/>
+		<appender-ref ref="STDOUT"/>
 	</root>
-
+	<logger name="com.summit" level="DEBUG">
+		<appender-ref ref="protallog"/>
+	</logger>
 </configuration>
