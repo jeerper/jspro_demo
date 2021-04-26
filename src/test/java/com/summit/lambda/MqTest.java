@@ -17,6 +17,6 @@ public class MqTest {
     @Test
     public void testMq(){
         System.out.println("qqq");
-        mqProducer.sendData("111");
+        //mqProducer.sendData("hahahahahahahahahahaha1111111");
     }
 }

@@ -27,6 +27,8 @@ mq:
   producerGroup: jsproProducer
   consumerGroup: jsproConsumer
   enable: true
+  topic: jsproTest
+  tag: testTag
 app:
   auth-white-list:
     # business url

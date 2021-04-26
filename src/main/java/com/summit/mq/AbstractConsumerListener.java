@@ -1,6 +1,7 @@
 package com.summit.mq;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import net.logstash.logback.encoder.org.apache.commons.lang.StringEscapeUtils;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
@@ -15,10 +16,13 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.nio.charset.Charset;
 import java.util.List;
 
 @Configuration
-public abstract class AbstractConsumerListener implements MessageListenerConcurrently {
+public abstract class AbstractConsumerListener<T> implements MessageListenerConcurrently {
     private Logger logger= LoggerFactory.getLogger(AbstractConsumerListener.class);
     @Autowired
     private  MqConfig config;
@@ -29,7 +33,7 @@ public abstract class AbstractConsumerListener implements MessageListenerConcurr
     private String tags;
     private ConsumeFromWhere consumeFromWhere;
     public AbstractConsumerListener() {
-        this("platform","paltform",ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
+        this("paltForm","paltForm",ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
     }
     public AbstractConsumerListener(String topic, String tags) {
         this(topic,tags,ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
@@ -40,7 +44,7 @@ public abstract class AbstractConsumerListener implements MessageListenerConcurr
         this.tags = tags;
     }
 
-    //public abstract void handlerMessage(Object data, MessageExt message);
+    public abstract void handlerMessage(T t, MessageExt message);
 
     public abstract void handlerMessage(MessageExt msg);
 
@@ -55,6 +59,7 @@ public abstract class AbstractConsumerListener implements MessageListenerConcurr
                 this.consumer.registerMessageListener(this);
                 this.consumer.setConsumeMessageBatchMaxSize(Integer.valueOf(this.config.getBatchMessageSize()));
                 this.consumer.start();
+                logger.info("MQ: 启动消费者");
             }catch (MQClientException e){
                 logger.error("MQ:消费者启动失败：{}-{}",e.getErrorMessage(),e.getResponseCode());
             }
@@ -73,11 +78,15 @@ public abstract class AbstractConsumerListener implements MessageListenerConcurr
                     String tag=tags[j];
                     if (tag.equals(msg.getTags())){
                         try{
-                            this.handlerMessage(msg);
+                            Class<T> clazz = (Class)((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+                            String messge_json = new String(msg.getBody(), "UTF-8");
+                            String messge = StringEscapeUtils.unescapeJava(messge_json);
+                            T t = this.objectMapper.readValue(messge, clazz);
+                            this.handlerMessage(t,msg);
                         }catch (Exception e){
-                            logger.error("MQ:消费者接收消息失败");
+                            logger.error("MQ:消费者接收消息失败",e);
                         }
-                        logger.info("MQ:消费者接受消息：{} {} {} {} {}",new Object[]{msg.getMsgId(),msg.getTopic(),msg.getTags(),new String(msg.getBody(),"utf-8")});
+                        logger.info("MQ:消费者接受消息：{} {} {} {} ",new Object[]{msg.getMsgId(),msg.getTopic(),msg.getTags(),new String(msg.getBody(),"utf-8")});
                     }
                 }
                 index++;
