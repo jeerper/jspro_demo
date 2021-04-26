@@ -1,52 +1,37 @@
 package com.summit.mq;
 
 import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.summit.model.DeviceData;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.UnsupportedEncodingException;
+
 @Component
-public class MqConsumer extends AbstractConsumerListener<MqConsumer.Data>{
+public class MqConsumer extends AbstractConsumerListener<DeviceData>{
     private Logger logger= LoggerFactory.getLogger(MqConsumer.class);
-    public static class Data{
-        private String id;
-        private String dataInfo;
-        public Data() {
-        }
+    @Autowired
+    private ObjectMapper objectMapper;
 
-        public Data(String id, String dataInfo) {
-            this.id = id;
-            this.dataInfo = dataInfo;
-        }
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public String getDataInfo() {
-            return dataInfo;
-        }
-
-        public void setDataInfo(String dataInfo) {
-            this.dataInfo = dataInfo;
-        }
-    }
     MqConsumer(){
         super("jsproTest","testTag");
     }
-
     @Override
-    public void handlerMessage(Data data, MessageExt message) {
-        logger.info("MQ接收到的消息为自定义：" + JSON.toJSONString(data));
+    public void handlerMessage(DeviceData deviceData, MessageExt message) {
+        logger.info("MQ接收到的消息为自定义：" + JSON.toJSONString(deviceData));
     }
-
     @Override
     public void handlerMessage(MessageExt msg) {
-
+        try {
+            DeviceData deviceData = this.objectMapper.readValue(new String(msg.getBody(), "utf-8"), DeviceData.class);
+            logger.info("MQ接收到的消息为自定义：" + JSON.toJSONString(deviceData));
+        } catch (Exception e) {
+            logger.error("json解析失败收到的数据======>"+e);
+        }
     }
 }
