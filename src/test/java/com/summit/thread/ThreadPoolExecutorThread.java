@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.*;
 
 /**
@@ -48,6 +49,14 @@ public class ThreadPoolExecutorThread {
         ossUrlMap.values().stream().forEach(item->{
             System.out.println(item.getName());
         });
+        Set<Map.Entry<String, File>> entries = ossUrlMap.entrySet();
+        entries.stream().forEach(item->{
+            String key = item.getKey();
+            File value = item.getValue();
 
+        });
+        for (Map.Entry<String, File>  entry : ossUrlMap.entrySet()){
+
+        }
     }
 }
