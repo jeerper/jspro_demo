@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class MqConsumer extends AbstractConsumerListener<DeviceData>{
@@ -27,6 +29,9 @@ public class MqConsumer extends AbstractConsumerListener<DeviceData>{
     }
     @Override
     public void handlerMessage(MessageExt msg) {
+        List<String> data = new ArrayList<>();
+        data.add("qq");
+
         try {
             DeviceData deviceData = this.objectMapper.readValue(new String(msg.getBody(), "utf-8"), DeviceData.class);
             logger.info("MQ接收到的消息为自定义：" + JSON.toJSONString(deviceData));
