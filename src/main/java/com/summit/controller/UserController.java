@@ -11,11 +11,15 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 
 /**
@@ -74,6 +78,41 @@ public class UserController {
         } catch (Exception e) {
             logger.error("查找用户列表失败",e);
             return ResponseUtil.failedResponse("查找用户列表失败", e.getMessage());
+        }
+    }
+    @ApiOperation(value = "导入", notes = "根据Excel内容导入用户信息")
+    @RequestMapping(value = "/fileImport")
+    public Object fileImport(@RequestParam(value = "file",required = true) MultipartFile file,
+                                   @RequestParam(value ="username",required = false) String username,
+                                   @RequestParam(value ="sex",required = false) String sex){
+        try {
+            String  message =userService.fileImport(username,sex,file);
+            if (StringUtils.isNotBlank(message)){
+                return  ResponseUtil.failedResponse("部分数据导入失败",message);
+            }else {
+                return  ResponseUtil.sucessObjectResponse("导入成功");
+            }
+        } catch (Exception e) {
+            logger.error("导入失败",e);
+            return ResponseUtil.failedResponse("查找用户列表失败", e.getMessage());
+        }
+    }
+    @ApiOperation(value = "导出模板", notes = "导出用户信息")
+    @RequestMapping(value = "/exportTemplate")
+    public void exportTemplate(HttpServletRequest request, HttpServletResponse response){
+        try {
+            userService.exportTemplate(request,response);
+        } catch (Exception e) {
+            logger.error("导出失败",e);
+        }
+    }
+    @ApiOperation(value = "导出数据", notes = "导出用户信息")
+    @RequestMapping(value = "/export")
+    public void export(UserModel user,HttpServletRequest request, HttpServletResponse response){
+        try {
+            userService.export(user,request,response);
+        } catch (Exception e) {
+            logger.error("导出数据失败",e);
         }
     }
 

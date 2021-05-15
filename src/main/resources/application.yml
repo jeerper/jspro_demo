@@ -26,9 +26,12 @@ mq:
   name-service: 127.0.0.1:9876
   producerGroup: jsproProducer
   consumerGroup: jsproConsumer
-  enable: true
+  enable: false
   topic: jsproTest
   tag: testTag
+#导入、导出路径
+fileUploadPath:
+  path: d:/upload
 app:
   auth-white-list:
     # business url

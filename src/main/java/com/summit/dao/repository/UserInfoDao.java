@@ -28,4 +28,6 @@ public interface UserInfoDao extends BaseMapper<UserModel> {
                        @Param("sex")String sex,
                        @Param("startDate")Date startDate,
                        @Param("endDate")Date endDate);
+
+    void insertBach(List<UserModel> users);
 }

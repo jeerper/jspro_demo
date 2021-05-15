@@ -1,0 +1,62 @@
+2021-05-15 17:49:28,322 INFO (StartupInfoLogger.java:55)- Starting JsproDemoApplication using Java 1.8.0_51 on DESKTOP-CNENGIM with PID 12136 (D:\sgs_project\qianyy\backend\jspro_demo\target\classes started by qianyy in D:\sgs_project\qianyy\backend\jspro_demo)
+2021-05-15 17:49:28,332 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-05-15 17:49:28,332 INFO (SpringApplication.java:660)- No active profile set, falling back to default profiles: default
+2021-05-15 17:49:33,519 INFO (MqProducer.java:42)- MQ: 启动生产者
+2021-05-15 17:49:40,667 INFO (AbstractConsumerListener.java:62)- MQ: 启动消费者
+2021-05-15 17:49:43,004 INFO (AbstractConsumerListener.java:112)- MQ: 关闭生产者
+2021-05-15 17:49:43,026 INFO (MqProducer.java:85)- MQ: 关闭生产者
+2021-05-15 17:50:41,112 INFO (StartupInfoLogger.java:55)- Starting JsproDemoApplication using Java 1.8.0_51 on DESKTOP-CNENGIM with PID 6888 (D:\sgs_project\qianyy\backend\jspro_demo\target\classes started by qianyy in D:\sgs_project\qianyy\backend\jspro_demo)
+2021-05-15 17:50:41,125 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-05-15 17:50:41,125 INFO (SpringApplication.java:660)- No active profile set, falling back to default profiles: default
+2021-05-15 17:50:46,664 INFO (AbstractConsumerListener.java:112)- MQ: 关闭生产者
+2021-05-15 17:50:46,668 INFO (MqProducer.java:85)- MQ: 关闭生产者
+2021-05-15 17:52:13,691 INFO (StartupInfoLogger.java:55)- Starting JsproDemoApplication using Java 1.8.0_51 on DESKTOP-CNENGIM with PID 14916 (D:\sgs_project\qianyy\backend\jspro_demo\target\classes started by qianyy in D:\sgs_project\qianyy\backend\jspro_demo)
+2021-05-15 17:52:13,718 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-05-15 17:52:13,719 INFO (SpringApplication.java:660)- No active profile set, falling back to default profiles: default
+2021-05-15 17:52:19,508 INFO (AbstractConsumerListener.java:112)- MQ: 关闭生产者
+2021-05-15 17:52:19,510 INFO (MqProducer.java:85)- MQ: 关闭生产者
+2021-05-15 17:56:45,644 INFO (StartupInfoLogger.java:55)- Starting JsproDemoApplication using Java 1.8.0_51 on DESKTOP-CNENGIM with PID 15600 (D:\sgs_project\qianyy\backend\jspro_demo\target\classes started by qianyy in D:\sgs_project\qianyy\backend\jspro_demo)
+2021-05-15 17:56:45,657 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-05-15 17:56:45,657 INFO (SpringApplication.java:660)- No active profile set, falling back to default profiles: default
+2021-05-15 17:56:52,819 INFO (AbstractConsumerListener.java:112)- MQ: 关闭生产者
+2021-05-15 17:56:52,822 INFO (MqProducer.java:85)- MQ: 关闭生产者
+2021-05-15 18:05:48,758 INFO (StartupInfoLogger.java:55)- Starting JsproDemoApplication using Java 1.8.0_51 on DESKTOP-CNENGIM with PID 9520 (D:\sgs_project\qianyy\backend\jspro_demo\target\classes started by qianyy in D:\sgs_project\qianyy\backend\jspro_demo)
+2021-05-15 18:05:48,785 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-05-15 18:05:48,785 INFO (SpringApplication.java:660)- No active profile set, falling back to default profiles: default
+2021-05-15 18:05:54,299 INFO (AbstractConsumerListener.java:112)- MQ: 关闭生产者
+2021-05-15 18:05:54,302 INFO (MqProducer.java:85)- MQ: 关闭生产者
+2021-05-15 18:17:02,121 INFO (StartupInfoLogger.java:55)- Starting JsproDemoApplication using Java 1.8.0_51 on DESKTOP-CNENGIM with PID 16744 (D:\sgs_project\qianyy\backend\jspro_demo\target\classes started by qianyy in D:\sgs_project\qianyy\backend\jspro_demo)
+2021-05-15 18:17:02,125 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-05-15 18:17:02,125 INFO (SpringApplication.java:660)- No active profile set, falling back to default profiles: default
+2021-05-15 18:17:07,912 INFO (AbstractConsumerListener.java:112)- MQ: 关闭生产者
+2021-05-15 18:17:07,915 INFO (MqProducer.java:85)- MQ: 关闭生产者
+2021-05-15 18:19:55,747 INFO (StartupInfoLogger.java:55)- Starting JsproDemoApplication using Java 1.8.0_51 on DESKTOP-CNENGIM with PID 5372 (D:\sgs_project\qianyy\backend\jspro_demo\target\classes started by qianyy in D:\sgs_project\qianyy\backend\jspro_demo)
+2021-05-15 18:19:55,753 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-05-15 18:19:55,754 INFO (SpringApplication.java:660)- No active profile set, falling back to default profiles: default
+2021-05-15 18:20:01,460 INFO (AbstractConsumerListener.java:112)- MQ: 关闭生产者
+2021-05-15 18:20:01,462 INFO (MqProducer.java:85)- MQ: 关闭生产者
+2021-05-15 18:22:55,383 INFO (StartupInfoLogger.java:55)- Starting JsproDemoApplication using Java 1.8.0_51 on DESKTOP-CNENGIM with PID 11680 (D:\sgs_project\qianyy\backend\jspro_demo\target\classes started by qianyy in D:\sgs_project\qianyy\backend\jspro_demo)
+2021-05-15 18:22:55,388 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-05-15 18:22:55,389 INFO (SpringApplication.java:660)- No active profile set, falling back to default profiles: default
+2021-05-15 18:23:01,036 INFO (AbstractConsumerListener.java:112)- MQ: 关闭生产者
+2021-05-15 18:23:01,040 INFO (MqProducer.java:85)- MQ: 关闭生产者
+2021-05-15 18:24:41,199 INFO (StartupInfoLogger.java:55)- Starting JsproDemoApplication using Java 1.8.0_51 on DESKTOP-CNENGIM with PID 10184 (D:\sgs_project\qianyy\backend\jspro_demo\target\classes started by qianyy in D:\sgs_project\qianyy\backend\jspro_demo)
+2021-05-15 18:24:41,208 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-05-15 18:24:41,209 INFO (SpringApplication.java:660)- No active profile set, falling back to default profiles: default
+2021-05-15 18:24:47,493 INFO (AbstractConsumerListener.java:112)- MQ: 关闭生产者
+2021-05-15 18:24:47,495 INFO (MqProducer.java:85)- MQ: 关闭生产者
+2021-05-15 18:29:47,301 INFO (StartupInfoLogger.java:55)- Starting JsproDemoApplication using Java 1.8.0_51 on DESKTOP-CNENGIM with PID 18032 (D:\sgs_project\qianyy\backend\jspro_demo\target\classes started by qianyy in D:\sgs_project\qianyy\backend\jspro_demo)
+2021-05-15 18:29:47,318 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-05-15 18:29:47,319 INFO (SpringApplication.java:660)- No active profile set, falling back to default profiles: default
+2021-05-15 18:29:53,256 INFO (AbstractConsumerListener.java:112)- MQ: 关闭生产者
+2021-05-15 18:29:53,259 INFO (MqProducer.java:85)- MQ: 关闭生产者
+2021-05-15 18:30:08,471 INFO (StartupInfoLogger.java:55)- Starting JsproDemoApplication using Java 1.8.0_51 on DESKTOP-CNENGIM with PID 7504 (D:\sgs_project\qianyy\backend\jspro_demo\target\classes started by qianyy in D:\sgs_project\qianyy\backend\jspro_demo)
+2021-05-15 18:30:08,482 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-05-15 18:30:08,482 INFO (SpringApplication.java:660)- No active profile set, falling back to default profiles: default
+2021-05-15 18:30:14,477 INFO (AbstractConsumerListener.java:112)- MQ: 关闭生产者
+2021-05-15 18:30:14,479 INFO (MqProducer.java:85)- MQ: 关闭生产者
+2021-05-15 18:31:19,363 INFO (StartupInfoLogger.java:55)- Starting JsproDemoApplication using Java 1.8.0_51 on DESKTOP-CNENGIM with PID 13040 (D:\sgs_project\qianyy\backend\jspro_demo\target\classes started by qianyy in D:\sgs_project\qianyy\backend\jspro_demo)
+2021-05-15 18:31:19,379 DEBUG (StartupInfoLogger.java:56)- Running with Spring Boot v2.4.1, Spring v5.3.2
+2021-05-15 18:31:19,380 INFO (SpringApplication.java:660)- No active profile set, falling back to default profiles: default
+2021-05-15 18:31:25,042 INFO (AbstractConsumerListener.java:112)- MQ: 关闭生产者
+2021-05-15 18:31:25,045 INFO (MqProducer.java:85)- MQ: 关闭生产者
