@@ -31,8 +31,8 @@ public class MapOrFlatMapTest {
     public void testMap(){
         ArrayList<String> words = Lists.newArrayList("java8", "Lambdas", "in");
         List<Integer> collect = words.stream().map(String::length).collect(toList());
-        Map<String, Integer> collect1 = words.stream().collect(Collectors.toMap(i -> i, i -> i.length()));
         log.info("words 长度是words:{}", ""+collect); //words 长度是:[5, 7, 2]
+        Map<String, Integer> collect1 = words.stream().collect(Collectors.toMap(i -> i, i -> i.length()));
         log.info("collect1 map是:{}", collect1);//{Lambdas=7, in=2, java8=5}
     }
     @Test
