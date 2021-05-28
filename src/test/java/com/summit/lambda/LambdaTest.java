@@ -1,9 +1,5 @@
 package com.summit.lambda;
-
-
-
-import com.google.common.collect.Lists;
-import org.apache.catalina.User;
+import com.summit.dao.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -60,51 +56,17 @@ public class LambdaTest {
     public void flatMap2(){
         List<String> hobby1 = Arrays.asList("java", "c", "音乐");
         List<String> hobby2 = Arrays.asList("c++", "c", "游戏");
-        User user1 = new User(1, "张三", hobby1);
-        User user2 = new User(2, "李四", hobby2);
+        User user1 = new User("1", "张三", hobby1);
+        User user2 = new User("2", "李四", hobby2);
         ArrayList<User> users = new ArrayList<>();
         users.add(user1);
         users.add(user2);
         // 将集合中每个用户的爱好进行计算，取并集
         List<String> result = users.stream()
-                .map(user -> user.hobby)
+                .map(user -> user.getHobby())
                 .flatMap(Collection::stream)
                 .distinct()
                 .collect(Collectors.toList());
         System.out.println(result);
-    }
-
-     class User {
-        int id;
-        String name;
-        List<String> hobby;
-
-        public User(int id, String name, List<String> hobby) {
-            this.id = id;
-            this.name = name;
-            this.hobby = hobby;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            User user = (User) o;
-            return id == user.id &&
-                    Objects.equals(name, user.name);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(id, name);
-        }
-
-        @Override
-        public String toString() {
-            return "User{" +
-                    "id=" + id +
-                    ", name='" + name + '\'' +
-                    '}';
-        }
     }
 }

@@ -60,4 +60,6 @@ public class UserModel {
     @ApiModelProperty(value = "备注", name = "note")
     @TableField(value = "NOTE")
     private String note;
+
+
 }
