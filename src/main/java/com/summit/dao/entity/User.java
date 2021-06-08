@@ -11,9 +11,18 @@ public class User {
     private String id;
     private String name;
     private Double money;
+    private Double money11;
     private List<String> hobby;
 
     public User() {
+    }
+
+    public Double getMoney11() {
+        return money11;
+    }
+
+    public void setMoney11(Double money11) {
+        this.money11 = money11;
     }
 
     public User(String id, String name) {
@@ -25,6 +34,13 @@ public class User {
         this.id = id;
         this.name = name;
         this.hobby = hobby;
+    }
+
+    public User(String id,String name, Double money, Double money11) {
+        this.id = id;
+        this.name = name;
+        this.money = money;
+        this.money11 = money11;
     }
 
     public User(String id, String name, Double money) {

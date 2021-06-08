@@ -40,8 +40,41 @@ public class GroupingByTest {
                 });
         newUsers.stream()
                 .sorted(Comparator.comparing(User::getId,Comparator.nullsFirst(String::compareTo))
-                .thenComparing(User::getName,Comparator.nullsFirst(String::compareTo)))
+                        .thenComparing(User::getName,Comparator.nullsFirst(String::compareTo)))
                 .collect(Collectors.toList());
+        System.out.println("users----->"+JSON.toJSONString(users));
+        System.out.println("newUsers----->"+JSON.toJSONString(newUsers));
+    }
+    @Test
+    public void groupingByTest1(){
+         List<User> users = new ArrayList<>();
+        users.add(new User("1","张飞",10.1,12.1));
+        users.add(new User("3","刘备",11.1,12.2));
+        users.add(new User("3","关羽",12.1,12.4));
+        users.add(new User("4","曹操",13.1,11.3));
+        users.add(new User("5","李明",14.1,12.5));
+        users.add(new User("6","张三",15.1,45.6));
+        List<User> newUsers = new ArrayList<>();
+//        users.parallelStream()
+//                .collect(Collectors.groupingBy(item -> item.getId(), Collectors.toList()))
+//                .forEach((id,transfer)->{
+//                    transfer.stream()
+//                            .reduce((a,b)->new User(a.getId(),a.getName(),
+//                                    emptyTransForm(a.getMoney()).add(emptyTransForm(a.getMoney11())).doubleValue()))
+//                            .ifPresent(newUsers::add);
+//                });
+//        newUsers.stream()
+//                .sorted(Comparator.comparing(User::getId,Comparator.nullsFirst(String::compareTo))
+//                .thenComparing(User::getName,Comparator.nullsFirst(String::compareTo)))
+//                .collect(Collectors.toList());
+        users.parallelStream()
+                .collect(Collectors.groupingBy(item -> item.getId(), Collectors.toList()))
+                .forEach((id,transfer)->{
+                    transfer.stream()
+                            .reduce((a,b)->new User(a.getId(),a.getName(),
+                                    emptyTransForm(a.getMoney()).add(emptyTransForm(a.getMoney11())).doubleValue()))
+                            .ifPresent(newUsers::add);
+                });
         System.out.println("users----->"+JSON.toJSONString(users));
         System.out.println("newUsers----->"+JSON.toJSONString(newUsers));
     }
