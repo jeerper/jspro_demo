@@ -1,5 +1,6 @@
 package com.summit.lambda;
 
+import com.summit.model.Student;
 import com.summit.mq.MqProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -14,9 +15,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class MqTest {
     @Autowired
     private MqProducer mqProducer;
+    @Autowired
+    private Student student;
     @Test
     public void testMq(){
-        System.out.println("qqq");
+        System.out.println("student------>"+student);
         //mqProducer.sendData("hahahahahahahahahahaha1111111");
     }
 }

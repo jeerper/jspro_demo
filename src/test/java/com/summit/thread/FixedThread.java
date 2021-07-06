@@ -1,5 +1,8 @@
 package com.summit.thread;
 
+import com.summit.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -14,6 +17,8 @@ import java.util.concurrent.Executors;
  */
 public class FixedThread {
     private  static final  String outPath="d:/importPah";
+    @Autowired
+    private static UserService userService;
     public static void main(String[] args) throws InterruptedException, IOException {
         runThread();
     }
@@ -25,7 +30,7 @@ public class FixedThread {
             executorService = Executors.newFixedThreadPool(xjCount);
             CountDownLatch countDownLatch = new CountDownLatch(xjCount);
             for (int j=0 ;j < xjCount;j++){
-                ThreadTask task = new ThreadTask(countDownLatch, outPath, ossUrlMap,j);
+                ThreadTask task = new ThreadTask(userService,countDownLatch, outPath, ossUrlMap,j);
                 executorService.execute(task);
             }
             countDownLatch.await();

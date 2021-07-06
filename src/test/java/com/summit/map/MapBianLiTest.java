@@ -31,6 +31,7 @@ public class MapBianLiTest {
      * 第一种用for循环
      * @param map
      */
+
     public void bianLi_1(Map<String,String> map){
         for (Map.Entry<String, String> entry : map.entrySet()){
             System.out.println(entry.getKey()+"--->"+entry.getValue());

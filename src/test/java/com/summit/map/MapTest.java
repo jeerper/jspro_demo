@@ -32,6 +32,13 @@ public class MapTest {
 //        }
         boolean allFieldNull = isAllFieldNull(user);
         System.out.println("allFieldNull-->"  + allFieldNull);
+
+
+        String a = "实验室主任";
+        int i = a.indexOf("实验室主任");
+        if (i != -1){
+            System.out.println("aaa");
+        }
     }
 
     /**

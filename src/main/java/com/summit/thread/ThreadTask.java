@@ -2,6 +2,9 @@ package com.summit.thread;
 
 
 
+import com.summit.dao.entity.UserModel;
+import com.summit.service.UserService;
+import com.summit.util.ApplicationContextProvider;
 import com.summit.util.UuidUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,16 +25,28 @@ public class ThreadTask extends  Thread {
     private Map<String,File> ossUrlMap;
     private  static final String fileName = "test.txt";
     private int j;
+    private UserService userService;
 
+    public ThreadTask(UserService userService,CountDownLatch count, String outPath, Map<String, File> ossUrlMap, int j) {
+        this.count = count;
+        this.outPath = outPath;
+        this.ossUrlMap = ossUrlMap;
+        this.j = j;
+        this.userService = userService;
+    }
     public ThreadTask(CountDownLatch count, String outPath, Map<String, File> ossUrlMap, int j) {
         this.count = count;
         this.outPath = outPath;
         this.ossUrlMap = ossUrlMap;
         this.j = j;
+        this.userService= ApplicationContextProvider.getBean(UserService.class);
     }
-
     public  void run(){
         try{
+            //处理逻辑开始
+            UserModel user = new UserModel();
+            userService.insertUserInfo(user);
+            //处理逻辑结束
             Thread.sleep(1000);
             System.out.println("ThreadName:"+Thread.currentThread().getName());
             String uuid = UuidUtil.getUuid();

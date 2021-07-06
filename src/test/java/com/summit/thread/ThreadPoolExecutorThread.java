@@ -1,6 +1,8 @@
 package com.summit.thread;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.summit.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 import java.io.IOException;
