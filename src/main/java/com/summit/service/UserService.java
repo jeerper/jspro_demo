@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author: jeerper
@@ -27,4 +28,6 @@ public interface UserService {
     void exportTemplate(HttpServletRequest request, HttpServletResponse response);
 
     void export(UserModel user, HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+    List<UserModel> findUsers();
 }

@@ -3,6 +3,7 @@ package com.summit.lambda;
 import com.alibaba.fastjson.JSON;
 import com.summit.dao.entity.User;
 import org.junit.Test;
+import org.junit.platform.commons.util.StringUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -44,6 +45,21 @@ public class GroupingByTest {
                 .collect(Collectors.toList());
         System.out.println("users----->"+JSON.toJSONString(users));
         System.out.println("newUsers----->"+JSON.toJSONString(newUsers));
+    }
+    @Test
+    public void groupingByTest2(){
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        long sum = list.stream().mapToInt(item -> StringUtils.isNotBlank(item) ? Integer.parseInt(item) : 0).summaryStatistics().getSum();
+        System.out.println("sum----->"+JSON.toJSONString(sum));
+        Integer sum2 = list.stream().map(item->StringUtils.isNotBlank(item) ? Integer.parseInt(item) : 0).reduce((x,y)->x+y).get();
+        System.out.println("sum2----->"+JSON.toJSONString(sum2));
+        Double sum3 =list.stream().map(item->StringUtils.isNotBlank(item) ? Double.parseDouble(item) : 0)
+                .reduce((x,y)->emptyTransForm(x).add(emptyTransForm(y)).doubleValue())
+                .get();
+        System.out.println("sum3----->"+JSON.toJSONString(sum3));
     }
     @Test
     public void groupingByTest1(){

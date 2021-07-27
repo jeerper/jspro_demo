@@ -109,6 +109,12 @@ public class UserServiceImpl implements UserService {
         ExcelHelper.export(request,response,xmlPath,xlsPath,dtList,nodeId,rootPath);
     }
 
+    @Override
+    public List<UserModel> findUsers() {
+        List<UserModel> users = new ArrayList<>();
+        return users;
+    }
+
     private String getSheetModel(Sheet sheet, String username, String sex) throws Exception {
         String message="";
         List<UserModel> users = new ArrayList<>();

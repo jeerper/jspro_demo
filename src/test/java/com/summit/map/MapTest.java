@@ -22,7 +22,6 @@ public class MapTest {
     @Test
     public void testMap() throws Exception {
         UserModel user = new UserModel();
-        user.setUserName("qiayy");
         Map<String, Object> strtMap = objetToMap(user);
         for (String mp : strtMap.keySet()) {
             System.out.println("key = " + mp + ", value = " + strtMap.get(mp));
