@@ -2,11 +2,16 @@ package com.summit.lambda;
 
 import com.alibaba.fastjson.JSON;
 import com.summit.dao.entity.User;
+import com.summit.model.Album;
+import com.summit.model.Track;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toSet;
 
 /**
  * @author: jeerper
@@ -64,5 +69,81 @@ public class FlatMapDemo {
 //        ---userMap---{"1":[{"id":"1","money":10.1,"name":"张飞"},{"id":"1","money":11.1,"name":"刘备"}],"2":[{"id":"2","money":12.1,"name":"关羽"},{"id":"2","money":13.1,"name":"曹操"}],"3":[{"id":"3","money":14.1,"name":"李明"},{"id":"3","money":15.1,"name":"张三"}]}
 //        ---names---["张飞","刘备","关羽","曹操","李明","张三"]
 
+    }
+
+    /**
+     * 假定选定一组专辑，找出其中所有长度大于 1 分钟的曲目名称。首先
+     * 初始化一个 Set 对象，用来保存找到的曲目名称。然后使用 for 循环遍历所有专辑，每次
+     * 循环中再使用一个 for 循环遍历每张专辑上的每首曲目，检查其长度是否大于 60 秒，如
+     * 果是，则将该曲目名称加入 Set 对象。
+     * @param
+     * @return
+     */
+    @Test
+    public void findLongTracks_1(){
+        Track track1 =  new Track("张飞",1000);
+        Track track2 =  new Track("刘备",20);
+        Track track3 =  new Track("赵云",61);
+        Track track4 =  new Track("曹操",59);
+        List<Track> tracks_12 = new ArrayList<>();
+        tracks_12.add(track1);
+        tracks_12.add(track2);
+        List<Track> tracks_34 = new ArrayList<>();
+        tracks_34.add(track3);
+        tracks_34.add(track4);
+        List<Album> albums = new ArrayList<>();
+        Album album1 = new Album();
+        album1.setTrackList(tracks_12);
+        Album album2 = new Album();
+        album2.setTrackList(tracks_34);
+        albums.add(album1);
+        albums.add(album2);
+        System.out.println("---albums---"+JSON.toJSONString(albums));
+        /**
+         * [
+         *        {
+         * 		"trackList": [
+         *            {
+         * 				"length": 1000,
+         * 				"name": "张飞"
+         *            },
+         *            {
+         * 				"length": 20,
+         * 				"name": "刘备"
+         *            }
+         * 		]
+         *    },
+         *    {
+         * 		"trackList": [
+         *            {
+         * 				"length": 61,
+         * 				"name": "赵云"
+         *            },
+         *            {
+         * 				"length": 59,
+         * 				"name": "曹操"
+         *            }
+         * 		]
+         *    }
+         * ]
+         */
+        Set<String> set = albums.stream().flatMap(item -> item.getTrackList().stream())
+                .filter(track -> track.getLength() > 60)
+                .map(track -> track.getName())
+                .collect(toSet());
+        System.out.println("---set---"+JSON.toJSONString(set));
+
+    }
+    public Set<String> findLongTracks_2(List<Album> albums) {
+        Set<String> trackNames = new HashSet<>();
+        for(Album album : albums) {
+            for (Track track : album.getTrackList()) {
+                if (track.getLength() > 60) {
+                    String name = track.getName();
+                    trackNames.add(name);
+                }
+            }
+        }
+        return trackNames;
     }
 }
