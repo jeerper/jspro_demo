@@ -11,7 +11,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ServletComponentScan
 @EnableTransactionManagement
 public class JsproDemoApplication {
-
+    public static final String TestFile = "testFile";
+    public static final String FileName = "test";
     public static void main(String[] args) {
         SpringApplication.run(JsproDemoApplication.class, args);
     }
