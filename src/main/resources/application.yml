@@ -11,6 +11,10 @@ spring:
     maxWait: 600000
   application:
     name: "jspro_demo"
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    timeout: 0
   flyway:
     # 如果启动的时候需要flyway管理sql脚本的话，将enabled设置为true
     enabled: false
