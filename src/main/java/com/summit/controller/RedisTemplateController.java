@@ -31,6 +31,7 @@ public class RedisTemplateController {
             redisHelper.setKeyForver(key,value);
             return  ResponseUtil.sucessObjectResponse("SUCCESS");
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseUtil.failedResponse("根据用户名查找用户失败", e.getMessage());
         }
     }
@@ -41,6 +42,7 @@ public class RedisTemplateController {
             logger.info("Redis写入的值：{}",vaule);
             return  ResponseUtil.sucessObjectResponse(vaule);
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseUtil.failedResponse("根据用户名查找用户失败", e.getMessage());
         }
     }

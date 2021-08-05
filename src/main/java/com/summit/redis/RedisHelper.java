@@ -1,6 +1,8 @@
 package com.summit.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
@@ -12,9 +14,11 @@ import java.util.concurrent.TimeUnit;
  * @date: 2021-08-04 16:37:37
  */
 @Component
+@DependsOn("redisConfig")
 public class RedisHelper {
 
     @Autowired
+    @Qualifier("initRedisTemplate")
     private RedisTemplate redisTemplate;
 
     /**

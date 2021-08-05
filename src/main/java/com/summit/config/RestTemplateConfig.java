@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
  * @date: 2021-08-04 17:08:55
  */
 @Component
-public class RedisTemplateConfig {
+public class RestTemplateConfig {
     @Autowired
     private RestTemplateBuilder builder;
 
