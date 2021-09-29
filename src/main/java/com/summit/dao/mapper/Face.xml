@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.summit.dao.repository.FaceDao">
+    <resultMap type="com.summit.dao.entity.FaceModel" id="faceMap" >
+        <result column="faceId" jdbcType="VARCHAR" property="faceId"/>
+        <result column="faceName" jdbcType="VARCHAR" property="faceName"/>
+        <result column="facePath" jdbcType="VARCHAR" property="facePath"/>
+        <result column="gender" jdbcType="INTEGER" property="gender"/>
+        <result column="gmtCreate" jdbcType="TIMESTAMP" property="gmtCreate"/>
+    </resultMap>
+    <insert id="insertFace" parameterType="com.summit.dao.entity.FaceModel">
+        INSERT INTO sys_face
+        (faceId,faceName,facePath,gender,gmtCreate)
+        VALUES (#{faceId},#{faceName},#{facePath},#{gender},#{gmtCreate})
+    </insert>
+</mapper>
